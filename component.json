@@ -1,0 +1,365 @@
+{
+    "title": "AutomationManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-runbook/2018-06-30/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Runbook_ListByAutomationAccount": {
+            "main": "./lib/actions/Runbook_ListByAutomationAccount.js",
+            "title": "Retrieve a list of runbooks.",
+            "description": "Retrieve a list of runbooks.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_Delete": {
+            "main": "./lib/actions/Runbook_Delete.js",
+            "title": "Delete the runbook by name.",
+            "description": "Delete the runbook by name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_Get": {
+            "main": "./lib/actions/Runbook_Get.js",
+            "title": "Retrieve the runbook identified by runbook name.",
+            "description": "Retrieve the runbook identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_Update": {
+            "main": "./lib/actions/Runbook_Update.js",
+            "title": "Update the runbook identified by runbook name.",
+            "description": "Update the runbook identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_CreateOrUpdate": {
+            "main": "./lib/actions/Runbook_CreateOrUpdate.js",
+            "title": "Create the runbook identified by runbook name.",
+            "description": "Create the runbook identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_GetContent": {
+            "main": "./lib/actions/Runbook_GetContent.js",
+            "title": "Retrieve the content of runbook identified by runbook name.",
+            "description": "Retrieve the content of runbook identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_GetContent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunbookDraft_Get": {
+            "main": "./lib/actions/RunbookDraft_Get.js",
+            "title": "Retrieve the runbook draft identified by runbook name.",
+            "description": "Retrieve the runbook draft identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunbookDraft_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunbookDraft_GetContent": {
+            "main": "./lib/actions/RunbookDraft_GetContent.js",
+            "title": "Retrieve the content of runbook draft identified by runbook name.",
+            "description": "Retrieve the content of runbook draft identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunbookDraft_GetContent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunbookDraft_ReplaceContent": {
+            "main": "./lib/actions/RunbookDraft_ReplaceContent.js",
+            "title": "Replaces the runbook draft content.",
+            "description": "Replaces the runbook draft content.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "text/powershell": "text/powershell",
+                        "application/json": "application/json"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunbookDraft_ReplaceContent.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJob_Get": {
+            "main": "./lib/actions/TestJob_Get.js",
+            "title": "Retrieve the test job for the specified runbook.",
+            "description": "Retrieve the test job for the specified runbook.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJob_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJob_Create": {
+            "main": "./lib/actions/TestJob_Create.js",
+            "title": "Create a test job of the runbook.",
+            "description": "Create a test job of the runbook.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJob_Create.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJob_Resume": {
+            "main": "./lib/actions/TestJob_Resume.js",
+            "title": "Resume the test job.",
+            "description": "Resume the test job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJob_Resume.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJob_Stop": {
+            "main": "./lib/actions/TestJob_Stop.js",
+            "title": "Stop the test job.",
+            "description": "Stop the test job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJob_Stop.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJobStreams_ListByTestJob": {
+            "main": "./lib/actions/TestJobStreams_ListByTestJob.js",
+            "title": "Retrieve a list of test job streams identified by runbook name.",
+            "description": "Retrieve a list of test job streams identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJobStreams_ListByTestJob.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJobStreams_Get": {
+            "main": "./lib/actions/TestJobStreams_Get.js",
+            "title": "Retrieve a test job stream of the test job identified by runbook name and stream id.",
+            "description": "Retrieve a test job stream of the test job identified by runbook name and stream id.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJobStreams_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "TestJob_Suspend": {
+            "main": "./lib/actions/TestJob_Suspend.js",
+            "title": "Suspend the test job.",
+            "description": "Suspend the test job.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/TestJob_Suspend.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RunbookDraft_UndoEdit": {
+            "main": "./lib/actions/RunbookDraft_UndoEdit.js",
+            "title": "Undo draft edit to last known published state identified by runbook name.",
+            "description": "Undo draft edit to last known published state identified by runbook name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RunbookDraft_UndoEdit.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Runbook_Publish": {
+            "main": "./lib/actions/Runbook_Publish.js",
+            "title": "Publish runbook draft.",
+            "description": "Publish runbook draft.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Runbook_Publish.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

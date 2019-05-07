@@ -1,0 +1,72 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "runbookName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the update runbook operation.",
+            "properties": {
+                "location": {
+                    "description": "Gets or sets the location of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Gets or sets the name of the resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets the runbook update properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "description": {
+                            "description": "Gets or sets the description of the runbook.",
+                            "type": "string"
+                        },
+                        "logActivityTrace": {
+                            "description": "Gets or sets the activity-level tracing options of the runbook.",
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "logProgress": {
+                            "description": "Gets or sets progress log option.",
+                            "type": "boolean"
+                        },
+                        "logVerbose": {
+                            "description": "Gets or sets verbose log option.",
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Gets or sets the tags attached to the resource.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
